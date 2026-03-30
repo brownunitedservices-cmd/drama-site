@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /episodes-1-6/
+Disallow: /episodes-1-10/
+Disallow: /vip-vault/
