@@ -1,3 +1,5 @@
+https://www.mainlandauto.net/inventory/nissan/frontier-crew-cab/704011/
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -294,8 +296,10 @@ function playEpisode(num, title, src) {
     el.classList.toggle('active', i === num - 1);
   });
   titleEl.textContent = title;
-  player.src = src;
-  player.play();
+  player.pause();
+  player.innerHTML = '<source src="' + src + '" type="audio/mpeg"/>';
+  player.load();
+  player.play().catch(function(){});
   document.getElementById('now-playing').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 document.getElementById('main-player').addEventListener('ended', function() {
