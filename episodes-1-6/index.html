@@ -1,3 +1,5 @@
+https://www.mainlandauto.net/inventory/nissan/frontier-crew-cab/704011/
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -205,15 +207,108 @@
     <p class="now-playing-label">Now playing</p>
     <p class="now-playing-title" id="now-playing-title">Episode 1 — The Contract</p>
     <audio id="main-player" controls>
-      <source src="../episode-01.mp3" type="audio/mpeg"/>
+      <source src="../audio/episode-01.mp3" type="audio/mpeg"/>
       Your browser does not support the audio element.
     </audio>
   </div>
 
   <div class="episode-list">
 
-    <div class="episode-item active" onclick="playEpisode(1,'Episode 1 — The Contract','../episode-01.mp3')">
+    <div class="episode-item active" onclick="playEpisode(1,'Episode 1 — The Contract','../audio/episode-01.mp3')">
       <div class="ep-play-icon">▶</div>
       <span class="ep-num">EP 1</span>
       <div class="ep-info">
         <div class="ep-title">The Contract</div>
+        <div class="ep-desc">She signed without reading the fine print. That was her first mistake.</div>
+      </div>
+      <span class="ep-duration">~2 min</span>
+    </div>
+
+    <div class="episode-item" onclick="playEpisode(2,'Episode 2 — What He Hid','../audio/episode-02.mp3')">
+      <div class="ep-play-icon">▶</div>
+      <span class="ep-num">EP 2</span>
+      <div class="ep-info">
+        <div class="ep-title">What He Hid</div>
+        <div class="ep-desc">The penthouse had seventeen rooms. She wasn't allowed in three of them.</div>
+      </div>
+      <span class="ep-duration">~2 min</span>
+    </div>
+
+    <div class="episode-item" onclick="playEpisode(3,'Episode 3 — The First Lie','../audio/episode-03.mp3')">
+      <div class="ep-play-icon">▶</div>
+      <span class="ep-num">EP 3</span>
+      <div class="ep-info">
+        <div class="ep-title">The First Lie</div>
+        <div class="ep-desc">He said he was in Tokyo. His car was in her driveway.</div>
+      </div>
+      <span class="ep-duration">~2 min</span>
+    </div>
+
+    <div class="episode-item" onclick="playEpisode(4,'Episode 4 — His Other Life','../audio/episode-04.mp3')">
+      <div class="ep-play-icon">▶</div>
+      <span class="ep-num">EP 4</span>
+      <div class="ep-info">
+        <div class="ep-title">His Other Life</div>
+        <div class="ep-desc">The name on the second phone wasn't hers.</div>
+      </div>
+      <span class="ep-duration">~2 min</span>
+    </div>
+
+    <div class="episode-item" onclick="playEpisode(5,'Episode 5 — Don\'t Let Him Touch You','../audio/episode-05.mp3')">
+      <div class="ep-play-icon">▶</div>
+      <span class="ep-num">EP 5</span>
+      <div class="ep-info">
+        <div class="ep-title">Don't Let Him Touch You</div>
+        <div class="ep-desc">The truth was worse than anything she had imagined.</div>
+      </div>
+      <span class="ep-duration">~2 min</span>
+    </div>
+
+    <div class="episode-item" onclick="playEpisode(6,'Episode 6 — The Reset','../audio/episode-06.mp3')">
+      <div class="ep-play-icon">▶</div>
+      <span class="ep-num">EP 6</span>
+      <div class="ep-info">
+        <div class="ep-title">The Reset</div>
+        <div class="ep-desc">She had a face. She had a name. She had everything.</div>
+      </div>
+      <span class="ep-duration">~2 min</span>
+    </div>
+
+  </div>
+
+  <div class="upgrade-banner">
+    <h3>Episodes 7–10 are waiting.</h3>
+    <p>Upgrade to Premium or VIP to unlock the full series — plus the Vol. 1 Canva Code Prescription Pack and more.</p>
+    <a href="https://brownunitedservices-cmd.github.io/breaking-code-studio/#tiers" class="btn-upgrade">Upgrade your membership →</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Breaking Code Studio · <a href="https://brownunitedservices-cmd.github.io/drama-site/">Drama home</a> · <a href="https://brownunitedservices-cmd.github.io/breaking-code-studio/">Breaking Code Studio</a> · <a href="https://brownunitedservices-cmd.github.io/drama-site/privacy-policy.html">Privacy Policy</a></p>
+</footer>
+
+<script>
+function playEpisode(num, title, src) {
+  const player = document.getElementById('main-player');
+  const titleEl = document.getElementById('now-playing-title');
+  document.querySelectorAll('.episode-item').forEach((el, i) => {
+    el.classList.toggle('active', i === num - 1);
+  });
+  titleEl.textContent = title;
+  player.pause();
+  player.innerHTML = '<source src="' + src + '" type="audio/mpeg"/>';
+  player.load();
+  player.play().catch(function(){});
+  document.getElementById('now-playing').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+document.getElementById('main-player').addEventListener('ended', function() {
+  const active = document.querySelector('.episode-item.active');
+  if (active) {
+    const next = active.nextElementSibling;
+    if (next) next.click();
+  }
+});
+</script>
+</body>
+</html>
